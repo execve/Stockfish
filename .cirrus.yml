@@ -1,5 +1,5 @@
 env:
-  CIRRUS_CLONE_DEPTH: 1
+  CIRRUS_CLONE_DEPTH: 100 # we need a Bench - hopefully one in 100 is a good ratio!
 
 task:
   freebsd_instance:
