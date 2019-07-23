@@ -10,4 +10,3 @@ task:
     - pkg install -y gmake
   script:
     env PATH=/usr/local/bin:$PATH gmake -C src build ARCH=x86-64-bmi2 COMP=clang
-    ./src/stockfish bench
