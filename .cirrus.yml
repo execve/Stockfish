@@ -10,5 +10,5 @@ task:
     - pkg upgrade -y
     - pkg install -y gmake llvm80
   script:
-    cd src && gmake profile-build ARCH=x86-64-bmi2 COMP=clang
+    env PATH=/usr/local/bin:$PATH cd src && gmake profile-build ARCH=x86-64-bmi2 COMP=clang
 
