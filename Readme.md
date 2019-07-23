@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/official-stockfish/Stockfish.svg?branch=master)](https://travis-ci.org/official-stockfish/Stockfish)
 [![Build Status](https://ci.appveyor.com/api/projects/status/github/official-stockfish/Stockfish?branch=master&svg=true)](https://ci.appveyor.com/project/mcostalba/stockfish/branch/master)
-[![FreeBSD Build Status](https://api.cirrus-ci.com/github/execve/Stockfish.svg]
+[![FreeBSD Build Status](https://api.cirrus-ci.com/github/execve/Stockfish.svg)]
 
 [Stockfish](https://stockfishchess.org) is a free, powerful UCI chess engine
 derived from Glaurung 2.1. It is not a complete chess program and requires a
