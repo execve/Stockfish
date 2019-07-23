@@ -12,12 +12,15 @@ task:
     cd src
   script:
     # Obtain bench reference from git log
+    - pwd
+    - git log HEAD | head
     - git log HEAD | grep "\b[Bb]ench[ :]\+[0-9]\{7\}" | head -n 1 | sed "s/[^0-9]*\([0-9]*\).*/\1/g" > git_sig
     - export benchref=$(cat git_sig)
     - echo "Reference bench:" $benchref
+    - echo "Number of cores:" $(sysctl -n hw.ncpu)
     - gmake clean && gmake -j$(sysctl -n hw.ncpu) build ARCH=x86-64-bmi2 COMP=clang && ../tests/signature.sh $benchref
-    - gmake clean && gmake -j$(sysctl -n hw.ncpu) optimize=no debug=yes build ARCH=x86-64 COMP=clang && ../tests/signature.sh $benchref
-    - gmake clean && gmake -j$(sysctl -n hw.ncpu) build ARCH=x86-32 COMP=clang && ../tests/signature.sh $benchref
+    #- gmake clean && gmake -j$(sysctl -n hw.ncpu) optimize=no debug=yes build ARCH=x86-64 COMP=clang && ../tests/signature.sh $benchref
+    #- gmake clean && gmake -j$(sysctl -n hw.ncpu) build ARCH=x86-32 COMP=clang && ../tests/signature.sh $benchref
     
     #
     # Check perft and reproducible search
