@@ -8,7 +8,7 @@ task:
     - sed -i.bak -e 's,pkg+http://pkg.FreeBSD.org/\${ABI}/quarterly,pkg+http://pkg.FreeBSD.org/\${ABI}/latest,' /etc/pkg/FreeBSD.conf
     - pkg upgrade -y
     - pkg install -y gmake llvm80
-    - ls /usr/local/bin
   script:
-    env PATH=/usr/local/bin:$PATH gmake -C src profile-build ARCH=x86-64-bmi2 COMP=clang
+    env PATH=/usr/local/bin:$PATH clang++ --version
+    env PATH=/usr/local/bin:$PATH gmake -C src build ARCH=x86-64-bmi2 COMP=clang
 
