@@ -1,14 +1,15 @@
 env:
   CIRRUS_CLONE_DEPTH: 1
 
-freebsd_instance:
-  image: freebsd-12-0-release-amd64
-
-install_script:
-  - sed -i.bak -e 's,pkg+http://pkg.FreeBSD.org/\${ABI}/quarterly,pkg+http://pkg.FreeBSD.org/\${ABI}/latest,' /etc/pkg/FreeBSD.conf
-  - pkg upgrade -y
-  - pkg install -y gmake llvm80
-
-script:
-  gmake profile-build ARCH=x86-64-bmi2 COMP=clang
+task:
+  env:
+  freebsd_instance:
+    image: freebsd-12-0-release-amd64
+    image: freebsd-11-2-release-amd64
+  install_script:
+    - sed -i.bak -e 's,pkg+http://pkg.FreeBSD.org/\${ABI}/quarterly,pkg+http://pkg.FreeBSD.org/\${ABI}/latest,' /etc/pkg/FreeBSD.conf
+    - pkg upgrade -y
+    - pkg install -y gmake llvm80
+  script:
+    gmake profile-build ARCH=x86-64-bmi2 COMP=clang
 
